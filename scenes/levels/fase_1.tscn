@@ -1,0 +1,292 @@
+[gd_scene format=3 uid="uid://b8ab1wuoklj6l"]
+
+[ext_resource type="Script" uid="uid://x5q2ny1m7rdd" path="res://scripts/player/player.gd" id="1_u1f2d"]
+[ext_resource type="Texture2D" uid="uid://dtfnk51a4xm44" path="res://assets/sprites/000.png" id="2_5kpeh"]
+[ext_resource type="Texture2D" uid="uid://l66il6h83k15" path="res://assets/sprites/parede meio P1.png" id="3_omirp"]
+[ext_resource type="Texture2D" uid="uid://h38pqgt82ids" path="res://assets/sprites/canto direito P1.png" id="4_7wwkh"]
+[ext_resource type="Texture2D" uid="uid://cqf45ycmj3xjy" path="res://assets/sprites/canto esquerdo P1.png" id="5_72ss2"]
+[ext_resource type="Script" uid="uid://xuvg82wwopa2" path="res://scripts/objects/documento_area.gd" id="6_a560k"]
+[ext_resource type="Texture2D" uid="uid://dnencux31j8pr" path="res://assets/sprites/aério 1.png" id="6_sl7v6"]
+[ext_resource type="Texture2D" uid="uid://djwc5gu66sdkx" path="res://assets/sprites/cabo.png" id="7_72ss2"]
+[ext_resource type="Texture2D" uid="uid://clhjh8wdx3ohr" path="res://assets/sprites/gaiolamacaco.png" id="7_a560k"]
+[ext_resource type="Texture2D" uid="uid://dgchi0peiext2" path="res://assets/sprites/armário metal.png" id="8_ayq7k"]
+[ext_resource type="Texture2D" uid="uid://c8ye7bhi03w53" path="res://assets/sprites/luz.png" id="8_sl7v6"]
+[ext_resource type="Texture2D" uid="uid://bipyp1sm2xnk2" path="res://assets/sprites/terminal.png" id="10_ayq7k"]
+[ext_resource type="Script" uid="uid://dlyshqkyy8n4h" path="res://scripts/objects/terminal_area.gd" id="11_ayq7k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga7mg"]
+size = Vector2(359, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omirp"]
+size = Vector2(36, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wwkh"]
+size = Vector2(36.000008, 26.000004)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dtam"]
+size = Vector2(36, 31.250002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72ss2"]
+size = Vector2(28, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl7v6"]
+size = Vector2(28, 62)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_a560k"]
+b = Vector2(0, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayq7k"]
+size = Vector2(76, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrp63"]
+size = Vector2(76, 7)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qrp63"]
+radius = 4.0
+height = 28.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n40sw"]
+radius = 6.0
+height = 12.0
+
+[node name="Fase-1" type="Node2D" unique_id=1272207765]
+position = Vector2(198, 51)
+
+[node name="solo" type="StaticBody2D" parent="." unique_id=866626645]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solo" unique_id=622555382]
+position = Vector2(99, 174)
+shape = SubResource("RectangleShape2D_ga7mg")
+
+[node name="CantoEsquerdoP1" type="Sprite2D" parent="." unique_id=1731063381]
+position = Vector2(-21.75, 95.57814)
+scale = Vector2(0.13753055, 0.06349826)
+texture = ExtResource("5_72ss2")
+
+[node name="CantoDireitoP1" type="Sprite2D" parent="." unique_id=1917567537]
+position = Vector2(217.33545, 95.5)
+scale = Vector2(0.13661367, 0.06342593)
+texture = ExtResource("4_7wwkh")
+
+[node name="ParedeMeioP1" type="Sprite2D" parent="." unique_id=562900075]
+position = Vector2(95.33545, 95.5)
+scale = Vector2(0.10146862, 0.06342593)
+texture = ExtResource("3_omirp")
+
+[node name="celamacaco" type="StaticBody2D" parent="." unique_id=1858713925]
+
+[node name="Gaiolamacaco" type="Sprite2D" parent="celamacaco" unique_id=1093998268]
+position = Vector2(-41.75, 146.99998)
+scale = Vector2(0.041226257, 0.04237806)
+texture = ExtResource("7_a560k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="celamacaco" unique_id=1129816984]
+position = Vector2(-43, 147)
+shape = SubResource("RectangleShape2D_omirp")
+
+[node name="armarioaereo" type="StaticBody2D" parent="." unique_id=544888545]
+position = Vector2(-1.5258789e-05, 0)
+scale = Vector2(1, 0.99999994)
+
+[node name="Aério1" type="Sprite2D" parent="armarioaereo" unique_id=1750601355]
+position = Vector2(20.000015, 120.00001)
+scale = Vector2(0.048120845, 0.036795806)
+texture = ExtResource("6_sl7v6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="armarioaereo" unique_id=1398475799]
+position = Vector2(20.000015, 120.00001)
+shape = SubResource("RectangleShape2D_7wwkh")
+
+[node name="documentoArea" type="Area2D" parent="armarioaereo" unique_id=478293642]
+script = ExtResource("6_a560k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="armarioaereo/documentoArea" unique_id=1883714867]
+position = Vector2(20.000015, 91.62501)
+shape = SubResource("RectangleShape2D_7dtam")
+
+[node name="avisoTexto" type="Label" parent="armarioaereo/documentoArea" unique_id=2115365388]
+visible = false
+offset_left = 43.000015
+offset_top = 74.00001
+offset_right = 187.00002
+offset_bottom = 97.00001
+text = "Aperte \"E\" para ler"
+
+[node name="armario" type="StaticBody2D" parent="." unique_id=1793069662]
+
+[node name="ArmárioMetal" type="Sprite2D" parent="armario" unique_id=46464436]
+position = Vector2(155, 132.00002)
+scale = Vector2(0.03634053, 0.033966172)
+texture = ExtResource("8_ayq7k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="armario" unique_id=1830143844]
+position = Vector2(155, 101)
+shape = SubResource("RectangleShape2D_72ss2")
+one_way_collision = true
+
+[node name="SensorEscalada" type="Area2D" parent="armario" unique_id=406880635]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="armario/SensorEscalada" unique_id=1924222750]
+position = Vector2(155, 133)
+shape = SubResource("RectangleShape2D_sl7v6")
+
+[node name="cabo" type="StaticBody2D" parent="." unique_id=1611146932]
+
+[node name="Sprite2D" type="Sprite2D" parent="cabo" unique_id=1282587051]
+position = Vector2(100, 44.5)
+scale = Vector2(0.24999905, 0.09749304)
+texture = ExtResource("7_72ss2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cabo" unique_id=2103099775]
+position = Vector2(100, 28)
+shape = SubResource("SegmentShape2D_a560k")
+
+[node name="luz" type="StaticBody2D" parent="." unique_id=1775656453]
+
+[node name="Sprite2D" type="Sprite2D" parent="luz" unique_id=1705723659]
+position = Vector2(100, 66)
+scale = Vector2(0.054036427, 0.022949208)
+texture = ExtResource("8_sl7v6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="luz" unique_id=151884856]
+position = Vector2(100, 65.75)
+shape = SubResource("RectangleShape2D_ayq7k")
+
+[node name="SensorEscalada" type="Area2D" parent="luz" unique_id=1618119365]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="luz/SensorEscalada" unique_id=1590095634]
+position = Vector2(100, 67)
+shape = SubResource("RectangleShape2D_qrp63")
+
+[node name="terminal" type="StaticBody2D" parent="." unique_id=1011989553]
+
+[node name="Sprite2D" type="Sprite2D" parent="terminal" unique_id=612482458]
+position = Vector2(247.24998, 149.25)
+scale = Vector2(0.020996055, 0.02246093)
+texture = ExtResource("10_ayq7k")
+
+[node name="terminalArea" type="Area2D" parent="terminal" unique_id=276336584]
+script = ExtResource("11_ayq7k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="terminal/terminalArea" unique_id=733746610]
+position = Vector2(247, 150)
+shape = SubResource("CapsuleShape2D_qrp63")
+
+[node name="avisoTerminal" type="Label" parent="terminal/terminalArea" unique_id=1262838304]
+visible = false
+offset_left = 200.0
+offset_top = 109.0
+offset_right = 296.0
+offset_bottom = 132.0
+text = "\"E\" Terminal"
+
+[node name="player" type="CharacterBody2D" parent="." unique_id=80367506]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(107, -6)
+script = ExtResource("1_u1f2d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1466385622]
+position = Vector2(-15, 147)
+shape = SubResource("CapsuleShape2D_n40sw")
+
+[node name="000" type="Sprite2D" parent="player" unique_id=824487934]
+position = Vector2(-15.000001, 147)
+scale = Vector2(0.004409898, 0.0052872836)
+texture = ExtResource("2_5kpeh")
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=691958736]
+position = Vector2(-15, 150)
+zoom = Vector2(2.5, 2.5)
+
+[node name="InterfaceDocumento" type="CanvasLayer" parent="." unique_id=2111150795]
+visible = false
+
+[node name="Panel" type="Panel" parent="InterfaceDocumento" unique_id=1537519108]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -60.5
+offset_right = 74.0
+offset_bottom = 60.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="InterfaceDocumento/Panel" unique_id=12307629]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 167.0
+offset_bottom = 120.0
+text = "Lorem ipsum dolor 
+sit amet, 
+consectetur 
+adipiscing elit."
+
+[node name="Button" type="Button" parent="InterfaceDocumento/Panel" unique_id=1394550102]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 1.0
+offset_right = 193.0
+offset_bottom = 32.0
+text = "X (E)"
+
+[node name="InterfaceTerminal" type="CanvasLayer" parent="." unique_id=1758442532]
+visible = false
+
+[node name="Panel" type="Panel" parent="InterfaceTerminal" unique_id=144611239]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = -81.0
+offset_right = 91.5
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="InterfaceTerminal/Panel" unique_id=610856624]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "1. Pergunta Pergunta 
+     Pergunta Pergunta"
+
+[node name="BotaoOpcao1" type="Button" parent="InterfaceTerminal/Panel" unique_id=955645145]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 55.0
+offset_right = 165.0
+offset_bottom = 86.0
+text = "opção 01"
+
+[node name="BotaoOpcao2" type="Button" parent="InterfaceTerminal/Panel" unique_id=523337471]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 91.0
+offset_right = 165.0
+offset_bottom = 116.0
+text = "opção 02"
+
+[node name="BotaoOpcao3" type="Button" parent="InterfaceTerminal/Panel" unique_id=32572422]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 126.0
+offset_right = 165.0
+offset_bottom = 157.0
+text = "opção 03"
+
+[connection signal="body_entered" from="armarioaereo/documentoArea" to="player" method="_on_documento_area_body_entered"]
+[connection signal="body_exited" from="armarioaereo/documentoArea" to="player" method="_on_documento_area_body_exited"]
+[connection signal="body_entered" from="armario/SensorEscalada" to="player" method="_on_sensor_escalada_body_entered"]
+[connection signal="body_exited" from="armario/SensorEscalada" to="player" method="_on_sensor_escalada_body_exited"]
+[connection signal="body_entered" from="luz/SensorEscalada" to="player" method="_on_sensor_escalada_body_entered"]
+[connection signal="body_exited" from="luz/SensorEscalada" to="player" method="_on_sensor_escalada_body_exited"]
+[connection signal="pressed" from="InterfaceDocumento/Panel/Button" to="armarioaereo/documentoArea" method="_on_button_pressed"]
+[connection signal="pressed" from="InterfaceTerminal/Panel/BotaoOpcao1" to="terminal/terminalArea" method="_on_botao_opcao_1_pressed"]
+[connection signal="pressed" from="InterfaceTerminal/Panel/BotaoOpcao2" to="terminal/terminalArea" method="_on_botao_opcao_2_pressed"]
+[connection signal="pressed" from="InterfaceTerminal/Panel/BotaoOpcao3" to="terminal/terminalArea" method="_on_botao_opcao_3_pressed"]

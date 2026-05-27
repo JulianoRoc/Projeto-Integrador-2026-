@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://p0w7kbre81jb"]
+
+[ext_resource type="Texture2D" uid="uid://sy7rkc7sx7lv" path="res://assets/sprites/caixa.png" id="1_8d1co"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8d1co"]
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dv55"]
+size = Vector2(22, 21)
+
+[node name="caixa" type="Node2D" unique_id=272939095]
+
+[node name="caixa" type="RigidBody2D" parent="." unique_id=1554401827]
+physics_material_override = SubResource("PhysicsMaterial_8d1co")
+lock_rotation = true
+linear_damp = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="caixa" unique_id=674778544]
+position = Vector2(17.999992, 16.687502)
+scale = Vector2(0.06285709, 0.06829074)
+texture = ExtResource("1_8d1co")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="caixa" unique_id=927271290]
+position = Vector2(17.999989, 16.687492)
+shape = SubResource("RectangleShape2D_7dv55")
