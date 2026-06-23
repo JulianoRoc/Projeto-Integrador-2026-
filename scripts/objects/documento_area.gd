@@ -1,28 +1,65 @@
 extends Area2D
 
-@onready var aviso_texto = $avisoTexto 
-@onready var interface_documento: CanvasLayer = $"../../InterfaceDocumento"
-@onready var interface_terminal: CanvasLayer = $"../../InterfaceTerminal"
+@onready var aviso_documento: Label = get_node_or_null("avisoTexto")
+
+@export var terminal_area_node: Area2D = null
+@export var interface_documento: CanvasLayer = null
 
 var jogador_perto = false
+var lendo = false
+var player_ref: CharacterBody2D = null
 
 func _ready():
-	aviso_texto.visible = false
-	
-	body_entered.connect(_ao_entrar_na_area)
-	body_exited.connect(_ao_sair_da_area)
+	if aviso_documento:
+		aviso_documento.text = "[E] Ler Documento"
+		aviso_documento.visible = false
+		
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
 
 func _process(_delta):
 	if jogador_perto and Input.is_action_just_pressed("interagir"):
-		interface_documento.visible = !interface_documento.visible
+		if not lendo:
+			abrir_documento_no_painel()
+		else:
+			fechar_documento_no_painel()
 
-func _ao_entrar_na_area(body):
-	if body.name.to_lower() == "player": 
+func _on_body_entered(body):
+	if body is CharacterBody2D and body.name.to_lower() == "player":
 		jogador_perto = true
-		aviso_texto.visible = true
+		player_ref = body
+		if aviso_documento:
+			aviso_documento.visible = true
 
-func _ao_sair_da_area(body):
-	if body.name.to_lower() == "player":
+func _on_body_exited(body):
+	if body == player_ref:
 		jogador_perto = false
-		aviso_texto.visible = false
+		player_ref = null
+		if aviso_documento:
+			aviso_documento.visible = false
+		if interface_documento:
+			interface_documento.visible = false
+		lendo = false
+
+func abrir_documento_no_painel():
+	if not interface_documento: return
+	lendo = true
+	interface_documento.visible = true
+	if aviso_documento: aviso_documento.visible = false
+	
+	if player_ref and "pode_se_mover" in player_ref:
+		player_ref.pode_se_mover = false
+		player_ref.velocity = Vector2.ZERO
+		
+	if terminal_area_node and terminal_area_node.has_method("liberar_terminal_do_quiz"):
+		terminal_area_node.liberar_terminal_do_quiz()
+
+func fechar_documento_no_painel():
+	lendo = false
+	if interface_documento:
 		interface_documento.visible = false
+	if aviso_documento:
+		aviso_documento.visible = true
+		
+	if player_ref and "pode_se_mover" in player_ref:
+		player_ref.pode_se_mover = true

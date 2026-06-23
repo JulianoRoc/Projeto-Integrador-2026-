@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://casna7a7cgh7f"]
+
+[ext_resource type="Script" uid="uid://bv7ekdjfxxmhn" path="res://scripts/ui/conclusao_jogo.gd" id="1_d7sl6"]
+[ext_resource type="Texture2D" uid="uid://bnjc47y6jq3ae" path="res://assets/sprites/fundo.png" id="2_k12c5"]
+
+[node name="ConclusaoJogo" type="Control" unique_id=289108848]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_d7sl6")
+
+[node name="FundoIntro" type="TextureRect" parent="." unique_id=257322778]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 651.0
+texture = ExtResource("2_k12c5")
+expand_mode = 1
+
+[node name="FundoTexto" type="ColorRect" parent="." unique_id=2115608464]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 27.0
+offset_right = 1112.0
+offset_bottom = 607.0
+color = Color(0, 0, 0, 0.3254902)
+
+[node name="TextoConclusao" type="Label" parent="." unique_id=570658213]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 92.0
+offset_right = 1018.0
+offset_bottom = 519.0
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

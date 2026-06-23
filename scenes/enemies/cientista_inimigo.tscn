@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dss44s81fg2y7"]
+
+[ext_resource type="Script" uid="uid://cvneuv0es81j7" path="res://scripts/enemies/cientista_inimigo.gd" id="1_2hnkd"]
+[ext_resource type="Texture2D" uid="uid://blq3441yc3eu1" path="res://assets/sprites/cientista-placeholder.png" id="2_2hnkd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vkbk2"]
+height = 52.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkv8f"]
+size = Vector2(25, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4rka"]
+size = Vector2(20, 51)
+
+[node name="CientistaInimigo" type="CharacterBody2D" unique_id=468059175]
+script = ExtResource("1_2hnkd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=814924531]
+scale = Vector2(0.058341045, 0.052440498)
+texture = ExtResource("2_2hnkd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=147980153]
+shape = SubResource("CapsuleShape2D_vkbk2")
+
+[node name="TimerPatrulha" type="Timer" parent="." unique_id=507053808]
+wait_time = 2.0
+autostart = true
+
+[node name="CampoDeVisao" type="Area2D" parent="." unique_id=1942996177]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CampoDeVisao" unique_id=925050912]
+position = Vector2(-16.5, -1)
+shape = SubResource("RectangleShape2D_xkv8f")
+
+[node name="AreaCaptura" type="Area2D" parent="." unique_id=1917398685]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaCaptura" unique_id=1206471751]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_s4rka")

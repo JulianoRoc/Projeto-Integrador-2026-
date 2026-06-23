@@ -12,10 +12,17 @@
 [ext_resource type="Texture2D" uid="uid://dgchi0peiext2" path="res://assets/sprites/armário metal.png" id="8_ayq7k"]
 [ext_resource type="Texture2D" uid="uid://c8ye7bhi03w53" path="res://assets/sprites/luz.png" id="8_sl7v6"]
 [ext_resource type="Texture2D" uid="uid://bipyp1sm2xnk2" path="res://assets/sprites/terminal.png" id="10_ayq7k"]
-[ext_resource type="Script" uid="uid://dlyshqkyy8n4h" path="res://scripts/objects/terminal_area.gd" id="11_ayq7k"]
+[ext_resource type="Script" uid="uid://dlyshqkyy8n4h" path="res://scripts/objects/terminal_area_1.gd" id="11_ayq7k"]
+[ext_resource type="Texture2D" uid="uid://bo2vn2pm61s4f" path="res://assets/sprites/documento_1.png" id="14_qrp63"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga7mg"]
-size = Vector2(359, 20)
+size = Vector2(351, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggpch"]
+size = Vector2(4, 157.79688)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1747"]
+size = Vector2(4, 157.79688)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omirp"]
 size = Vector2(36, 32)
@@ -25,6 +32,9 @@ size = Vector2(36.000008, 26.000004)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dtam"]
 size = Vector2(36, 31.250002)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7dtam"]
+font_size = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72ss2"]
 size = Vector2(28, 2)
@@ -45,9 +55,15 @@ size = Vector2(76, 7)
 radius = 4.0
 height = 28.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_ggpch"]
+font_size = 9
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n40sw"]
 radius = 6.0
 height = 12.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_v1747"]
+font_size = 33
 
 [node name="Fase-1" type="Node2D" unique_id=1272207765]
 position = Vector2(198, 51)
@@ -55,8 +71,16 @@ position = Vector2(198, 51)
 [node name="solo" type="StaticBody2D" parent="." unique_id=866626645]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="solo" unique_id=622555382]
-position = Vector2(99, 174)
+position = Vector2(97.5, 174)
 shape = SubResource("RectangleShape2D_ga7mg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="solo" unique_id=1619532894]
+position = Vector2(-80, 105.359375)
+shape = SubResource("RectangleShape2D_ggpch")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="solo" unique_id=1794321139]
+position = Vector2(275, 105.10156)
+shape = SubResource("RectangleShape2D_v1747")
 
 [node name="CantoEsquerdoP1" type="Sprite2D" parent="." unique_id=1731063381]
 position = Vector2(-21.75, 95.57814)
@@ -97,8 +121,10 @@ texture = ExtResource("6_sl7v6")
 position = Vector2(20.000015, 120.00001)
 shape = SubResource("RectangleShape2D_7wwkh")
 
-[node name="documentoArea" type="Area2D" parent="armarioaereo" unique_id=478293642]
+[node name="documentoArea" type="Area2D" parent="armarioaereo" unique_id=478293642 node_paths=PackedStringArray("terminal_area_node", "interface_documento")]
 script = ExtResource("6_a560k")
+terminal_area_node = NodePath("../../terminal/terminalArea")
+interface_documento = NodePath("../../InterfaceDocumento")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="armarioaereo/documentoArea" unique_id=1883714867]
 position = Vector2(20.000015, 91.62501)
@@ -106,28 +132,29 @@ shape = SubResource("RectangleShape2D_7dtam")
 
 [node name="avisoTexto" type="Label" parent="armarioaereo/documentoArea" unique_id=2115365388]
 visible = false
-offset_left = 43.000015
-offset_top = 74.00001
-offset_right = 187.00002
-offset_bottom = 97.00001
-text = "Aperte \"E\" para ler"
+offset_left = -21.999985
+offset_top = 75.00001
+offset_right = 68.000015
+offset_bottom = 89.00001
+text = "\"E\" para interagir"
+label_settings = SubResource("LabelSettings_7dtam")
 
 [node name="armario" type="StaticBody2D" parent="." unique_id=1793069662]
 
 [node name="ArmárioMetal" type="Sprite2D" parent="armario" unique_id=46464436]
-position = Vector2(155, 132.00002)
+position = Vector2(134, 132.00002)
 scale = Vector2(0.03634053, 0.033966172)
 texture = ExtResource("8_ayq7k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="armario" unique_id=1830143844]
-position = Vector2(155, 101)
+position = Vector2(134, 101)
 shape = SubResource("RectangleShape2D_72ss2")
 one_way_collision = true
 
 [node name="SensorEscalada" type="Area2D" parent="armario" unique_id=406880635]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="armario/SensorEscalada" unique_id=1924222750]
-position = Vector2(155, 133)
+position = Vector2(134, 133)
 shape = SubResource("RectangleShape2D_sl7v6")
 
 [node name="cabo" type="StaticBody2D" parent="." unique_id=1611146932]
@@ -174,11 +201,14 @@ shape = SubResource("CapsuleShape2D_qrp63")
 
 [node name="avisoTerminal" type="Label" parent="terminal/terminalArea" unique_id=1262838304]
 visible = false
-offset_left = 200.0
-offset_top = 109.0
-offset_right = 296.0
-offset_bottom = 132.0
-text = "\"E\" Terminal"
+offset_left = 123.0
+offset_top = 97.0
+offset_right = 268.0
+offset_bottom = 111.0
+text = "\"E\" para interagir"
+label_settings = SubResource("LabelSettings_ggpch")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="player" type="CharacterBody2D" parent="." unique_id=80367506]
 light_mask = 3
@@ -197,41 +227,38 @@ texture = ExtResource("2_5kpeh")
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=691958736]
 position = Vector2(-15, 150)
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(5, 5)
+limit_left = 120
+limit_top = 78
+limit_right = 471
+limit_bottom = 216
 
-[node name="InterfaceDocumento" type="CanvasLayer" parent="." unique_id=2111150795]
+[node name="InterfaceDocumento" type="CanvasLayer" parent="." unique_id=1342892875]
 visible = false
 
-[node name="Panel" type="Panel" parent="InterfaceDocumento" unique_id=1537519108]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -74.0
-offset_top = -60.5
-offset_right = 74.0
-offset_bottom = 60.5
+[node name="Panel" type="Panel" parent="InterfaceDocumento" unique_id=1643654760]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="InterfaceDocumento/Panel" unique_id=12307629]
+[node name="imagemDocumento" type="TextureRect" parent="InterfaceDocumento/Panel" unique_id=1675867145]
 layout_mode = 0
-offset_left = 1.0
-offset_right = 167.0
-offset_bottom = 120.0
-text = "Lorem ipsum dolor 
-sit amet, 
-consectetur 
-adipiscing elit."
+offset_left = 156.0
+offset_top = 53.0
+offset_right = 994.0
+offset_bottom = 462.0
+texture = ExtResource("14_qrp63")
 
-[node name="Button" type="Button" parent="InterfaceDocumento/Panel" unique_id=1394550102]
+[node name="Label" type="Label" parent="InterfaceDocumento/Panel" unique_id=892710883]
 layout_mode = 0
-offset_left = 151.0
-offset_top = 1.0
-offset_right = 193.0
-offset_bottom = 32.0
-text = "X (E)"
+offset_left = 674.0
+offset_top = 465.0
+offset_right = 1006.0
+offset_bottom = 511.0
+text = "(PRESS \"E\" para sair.)"
+label_settings = SubResource("LabelSettings_v1747")
 
 [node name="InterfaceTerminal" type="CanvasLayer" parent="." unique_id=1758442532]
 visible = false
@@ -242,43 +269,52 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.5
-offset_top = -81.0
-offset_right = 91.5
-offset_bottom = 81.0
+offset_left = -173.0
+offset_top = -94.0
+offset_right = 265.0
+offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="InterfaceTerminal/Panel" unique_id=610856624]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "1. Pergunta Pergunta 
-     Pergunta Pergunta"
+offset_left = 35.0
+offset_top = 10.0
+offset_right = 416.0
+offset_bottom = 64.0
+text = "1. Qual é um dos principais objetivos das leis de 
+bioética sobre testes em animais?"
 
 [node name="BotaoOpcao1" type="Button" parent="InterfaceTerminal/Panel" unique_id=955645145]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 55.0
-offset_right = 165.0
-offset_bottom = 86.0
-text = "opção 01"
+offset_left = 13.0
+offset_top = 73.0
+offset_right = 428.0
+offset_bottom = 104.0
+text = "Aumentar a quantidade de experimentos realizados."
 
 [node name="BotaoOpcao2" type="Button" parent="InterfaceTerminal/Panel" unique_id=523337471]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 91.0
-offset_right = 165.0
-offset_bottom = 116.0
-text = "opção 02"
+offset_left = 8.0
+offset_top = 113.0
+offset_right = 432.0
+offset_bottom = 144.0
+text = "Proteger os animais contra sofrimento desnecessário."
 
 [node name="BotaoOpcao3" type="Button" parent="InterfaceTerminal/Panel" unique_id=32572422]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 126.0
-offset_right = 165.0
-offset_bottom = 157.0
-text = "opção 03"
+offset_left = 35.0
+offset_top = 151.0
+offset_right = 411.0
+offset_bottom = 182.0
+text = "Eliminar a necessidade de pesquisas científicas."
+
+[node name="LabelMensagem" type="Label" parent="InterfaceTerminal/Panel" unique_id=130255894]
+layout_mode = 0
+offset_left = -403.0
+offset_top = -230.0
+offset_right = -363.0
+offset_bottom = -207.0
 
 [connection signal="body_entered" from="armarioaereo/documentoArea" to="player" method="_on_documento_area_body_entered"]
 [connection signal="body_exited" from="armarioaereo/documentoArea" to="player" method="_on_documento_area_body_exited"]
@@ -286,7 +322,6 @@ text = "opção 03"
 [connection signal="body_exited" from="armario/SensorEscalada" to="player" method="_on_sensor_escalada_body_exited"]
 [connection signal="body_entered" from="luz/SensorEscalada" to="player" method="_on_sensor_escalada_body_entered"]
 [connection signal="body_exited" from="luz/SensorEscalada" to="player" method="_on_sensor_escalada_body_exited"]
-[connection signal="pressed" from="InterfaceDocumento/Panel/Button" to="armarioaereo/documentoArea" method="_on_button_pressed"]
 [connection signal="pressed" from="InterfaceTerminal/Panel/BotaoOpcao1" to="terminal/terminalArea" method="_on_botao_opcao_1_pressed"]
 [connection signal="pressed" from="InterfaceTerminal/Panel/BotaoOpcao2" to="terminal/terminalArea" method="_on_botao_opcao_2_pressed"]
 [connection signal="pressed" from="InterfaceTerminal/Panel/BotaoOpcao3" to="terminal/terminalArea" method="_on_botao_opcao_3_pressed"]

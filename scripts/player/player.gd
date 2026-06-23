@@ -1,16 +1,16 @@
 extends CharacterBody2D
 
-const SPEED = 180.0             
-const ACCELERATION = 900.0      
+const SPEED = 135.0             
+const ACCELERATION = 800.0      
 const FRICTION = 1200.0         
 const AIR_RESISTANCE = 400.0    
 
-const JUMP_VELOCITY = -380.0    
-const FALL_GRAVITY_MULTIPLIER = 1.6 
+const JUMP_VELOCITY = -280.0    
+const FALL_GRAVITY_MULTIPLIER = 1.3 
 
 var pode_escalar = false
 var escalando = false
-const CLIMB_SPEED = 130.0
+const CLIMB_SPEED = 100.0
 
 var pode_pendurar = false
 var pendurado = false
@@ -21,9 +21,8 @@ var pode_se_mover = true
 
 func _physics_process(delta):
 	if not pode_se_mover:
-		velocity.y += gravity * delta
-		move_and_slide()
-		return
+		velocity = Vector2.ZERO 
+		return 
 	
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
@@ -140,3 +139,36 @@ func _on_documento_area_body_entered(body: Node2D) -> void:
 
 func _on_documento_area_body_exited(body: Node2D) -> void:
 	pass
+
+var posicao_antes_de_esconder : Vector2 = Vector2.ZERO
+
+var esta_escondido: bool = false 
+
+func entrar_no_esconderijo():
+	pode_se_mover = false
+	esta_escondido = true
+	velocity = Vector2.ZERO
+	
+	if has_node("CollisionShape2D"):
+		get_node("CollisionShape2D").disabled = true
+	
+	if has_node("000"):
+		get_node("000").visible = false
+	else:
+		self.visible = false 
+
+func sair_do_esconderijo():
+	pode_se_mover = true
+	esta_escondido = false
+	self.visible = true
+	
+	if has_node("CollisionShape2D"):
+		get_node("CollisionShape2D").disabled = false
+	
+	if has_node("000"):
+		get_node("000").visible = true
+		
+func _process(delta):
+	if get_tree().current_scene.has_node("TelaGameOver") and get_tree().current_scene.get_node("TelaGameOver").visible:
+		if Input.is_action_just_pressed("reiniciar") or Input.is_key_pressed(KEY_R):
+			get_tree().reload_current_scene()

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://h2xeipmxlm1k"]
+
+[ext_resource type="Script" uid="uid://cf352vfaob75d" path="res://scripts/ui/introducao_jogo.gd" id="1_425y3"]
+[ext_resource type="Texture2D" uid="uid://bnjc47y6jq3ae" path="res://assets/sprites/fundo.png" id="2_hxdr4"]
+
+[node name="IntroducaoJogo" type="Control" unique_id=659460800]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -248.0
+offset_top = 76.0
+offset_right = -248.0
+offset_bottom = 76.0
+grow_horizontal = 2
+script = ExtResource("1_425y3")
+primeira_fase = "uid://uybb403r6jd6"
+
+[node name="FundoIntro" type="TextureRect" parent="." unique_id=1411292665]
+layout_mode = 0
+offset_right = 483.0
+offset_bottom = 445.0
+texture = ExtResource("2_hxdr4")
+expand_mode = 1
+
+[node name="FundoTexto" type="ColorRect" parent="." unique_id=384981901]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 27.0
+offset_right = 445.0
+offset_bottom = 408.0
+color = Color(0, 0, 0, 0.3254902)
+
+[node name="TextoContexto" type="Label" parent="." unique_id=1434772920]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 37.0
+offset_right = 427.0
+offset_bottom = 215.0
+autowrap_mode = 2
+
+[node name="AvisoAvancar" type="Label" parent="." unique_id=866999828]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 375.0
+offset_right = 431.0
+offset_bottom = 398.0
+text = "[E] Avançar..."

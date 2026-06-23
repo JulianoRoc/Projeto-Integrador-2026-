@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dumk7unjy41ww"]
+
+[ext_resource type="Script" uid="uid://cuem3kn5i3nw6" path="res://scripts/ui/tutorial_fase_2.gd" id="1_mu4xj"]
+[ext_resource type="Texture2D" uid="uid://bnjc47y6jq3ae" path="res://assets/sprites/fundo.png" id="2_4cu86"]
+
+[node name="tutorial_fase2" type="Control" unique_id=60082223]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_mu4xj")
+segunda_fase = "uid://cu8uritqh01g1"
+
+[node name="FundoIntro" type="TextureRect" parent="." unique_id=213297949]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 651.0
+texture = ExtResource("2_4cu86")
+expand_mode = 1
+
+[node name="FundoTexto" type="ColorRect" parent="." unique_id=234135204]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 27.0
+offset_right = 1112.0
+offset_bottom = 607.0
+color = Color(0, 0, 0, 0.3254902)
+
+[node name="TextoTutorial" type="Label" parent="." unique_id=1835464051]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 81.0
+offset_right = 1010.0
+offset_bottom = 544.0
+vertical_alignment = 1
+autowrap_mode = 2

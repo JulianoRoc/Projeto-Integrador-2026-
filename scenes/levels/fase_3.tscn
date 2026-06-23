@@ -1,0 +1,250 @@
+[gd_scene format=3 uid="uid://davbscd1607tr"]
+
+[ext_resource type="Texture2D" uid="uid://cqf45ycmj3xjy" path="res://assets/sprites/canto esquerdo P1.png" id="1_hdpwe"]
+[ext_resource type="Texture2D" uid="uid://h38pqgt82ids" path="res://assets/sprites/canto direito P1.png" id="2_8ley3"]
+[ext_resource type="Texture2D" uid="uid://l66il6h83k15" path="res://assets/sprites/parede meio P1.png" id="3_1nf3m"]
+[ext_resource type="Script" uid="uid://dqy61wt20b5c3" path="res://scripts/objects/terminal_area_3.gd" id="5_6hd0c"]
+[ext_resource type="Texture2D" uid="uid://bipyp1sm2xnk2" path="res://assets/sprites/terminal.png" id="6_ltnir"]
+[ext_resource type="Script" uid="uid://duxeon21u1mbv" path="res://scripts/objects/caixa_documento.gd" id="7_8ley3"]
+[ext_resource type="PackedScene" uid="uid://dss44s81fg2y7" path="res://scenes/enemies/cientista_inimigo.tscn" id="9_hdpwe"]
+[ext_resource type="PackedScene" uid="uid://3nl4hwkh46h8" path="res://scenes/objects/caixa_esconderijo.tscn" id="10_dki62"]
+[ext_resource type="Texture2D" uid="uid://e7dfrn1f3hmv" path="res://assets/sprites/documento_3.png" id="10_hdpwe"]
+[ext_resource type="Script" uid="uid://x5q2ny1m7rdd" path="res://scripts/player/player.gd" id="11_0sxkd"]
+[ext_resource type="Script" uid="uid://b5hk6o373ydt" path="res://scripts/ui/tela_game_over.gd" id="11_8ley3"]
+[ext_resource type="Texture2D" uid="uid://dk26bof6xeisi" path="res://assets/sprites/game_over.png" id="12_1nf3m"]
+[ext_resource type="Texture2D" uid="uid://dtfnk51a4xm44" path="res://assets/sprites/000.png" id="12_d5ng1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga7mg"]
+size = Vector2(351, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1pdc"]
+size = Vector2(4, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdpwe"]
+size = Vector2(4, 157)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qrp63"]
+radius = 4.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_dki62"]
+font_size = 10
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n40sw"]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ley3"]
+font_size = 33
+
+[sub_resource type="LabelSettings" id="LabelSettings_juacc"]
+font_size = 32
+
+[node name="Fase-3" type="Node2D" unique_id=1272207765]
+position = Vector2(198, 51)
+
+[node name="solo" type="StaticBody2D" parent="." unique_id=866626645]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solo" unique_id=622555382]
+position = Vector2(97.5, 174)
+shape = SubResource("RectangleShape2D_ga7mg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="solo" unique_id=1074329900]
+position = Vector2(-80, 105.5)
+shape = SubResource("RectangleShape2D_l1pdc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="solo" unique_id=1239407637]
+position = Vector2(275, 105.5)
+shape = SubResource("RectangleShape2D_hdpwe")
+
+[node name="CantoEsquerdoP1" type="Sprite2D" parent="." unique_id=1731063381]
+position = Vector2(-21.75, 95.57814)
+scale = Vector2(0.13753055, 0.06349826)
+texture = ExtResource("1_hdpwe")
+
+[node name="CantoDireitoP1" type="Sprite2D" parent="." unique_id=1917567537]
+position = Vector2(217.33545, 95.5)
+scale = Vector2(0.13661367, 0.06342593)
+texture = ExtResource("2_8ley3")
+
+[node name="ParedeMeioP1" type="Sprite2D" parent="." unique_id=562900075]
+position = Vector2(99, 95.5)
+scale = Vector2(0.10146862, 0.063425936)
+texture = ExtResource("3_1nf3m")
+
+[node name="terminal" type="StaticBody2D" parent="." unique_id=1011989553]
+
+[node name="Sprite2D" type="Sprite2D" parent="terminal" unique_id=612482458]
+position = Vector2(252.99998, 149)
+scale = Vector2(0.020996055, 0.02246093)
+texture = ExtResource("6_ltnir")
+
+[node name="terminalArea" type="Area2D" parent="terminal" unique_id=276336584]
+script = ExtResource("5_6hd0c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="terminal/terminalArea" unique_id=733746610]
+position = Vector2(253, 149)
+shape = SubResource("CapsuleShape2D_qrp63")
+
+[node name="avisoTerminal" type="Label" parent="terminal/terminalArea" unique_id=1262838304]
+offset_left = 126.0
+offset_top = 71.0
+offset_right = 272.0
+offset_bottom = 134.0
+text = "\"E\" para interagir"
+label_settings = SubResource("LabelSettings_dki62")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CaixaEsconderijo" parent="." unique_id=1376445444 instance=ExtResource("10_dki62")]
+collision_layer = 2
+
+[node name="CaixaEsconderijo2" parent="." unique_id=137990724 instance=ExtResource("10_dki62")]
+position = Vector2(51, 0)
+collision_layer = 2
+
+[node name="CaixaEsconderijo3" parent="." unique_id=1253604644 node_paths=PackedStringArray("interface_doc", "interface_quiz", "terminal_area_node") instance=ExtResource("10_dki62")]
+position = Vector2(134, 0)
+collision_layer = 2
+script = ExtResource("7_8ley3")
+interface_doc = NodePath("../InterfaceDocumento")
+interface_quiz = NodePath("../InterfaceTerminal")
+terminal_area_node = NodePath("../terminal/terminalArea")
+
+[node name="CaixaEsconderijo4" parent="." unique_id=1789368202 instance=ExtResource("10_dki62")]
+position = Vector2(191, 0)
+collision_layer = 2
+
+[node name="player" type="CharacterBody2D" parent="." unique_id=80367506]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(107, -6)
+script = ExtResource("11_0sxkd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1466385622]
+position = Vector2(-137, 144)
+shape = SubResource("CapsuleShape2D_n40sw")
+
+[node name="000" type="Sprite2D" parent="player" unique_id=824487934]
+position = Vector2(-137, 144)
+scale = Vector2(0.004409898, 0.0052872836)
+texture = ExtResource("12_d5ng1")
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=691958736]
+position = Vector2(-137, 146)
+zoom = Vector2(5, 5)
+limit_left = 120
+limit_top = 78
+limit_right = 471
+limit_bottom = 216
+
+[node name="CientistaInimigo" parent="." unique_id=468059175 node_paths=PackedStringArray("tela_game_over") instance=ExtResource("9_hdpwe")]
+position = Vector2(97, 130)
+tela_game_over = NodePath("../tela_game_over")
+
+[node name="InterfaceTerminal" type="CanvasLayer" parent="." unique_id=1758442532]
+visible = false
+
+[node name="Panel" type="Panel" parent="InterfaceTerminal" unique_id=144611239]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -278.0
+offset_top = -131.0
+offset_right = 331.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="InterfaceTerminal/Panel" unique_id=610856624]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 8.0
+offset_right = 497.0
+offset_bottom = 57.0
+text = "O que os pesquisadores devem demonstrar antes 
+de realizar testes em animais?"
+
+[node name="BotaoOpcao1" type="Button" parent="InterfaceTerminal/Panel" unique_id=955645145]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 79.0
+offset_right = 519.0
+offset_bottom = 110.0
+text = "Que os experimentos serão concluídos rapidamente."
+
+[node name="BotaoOpcao2" type="Button" parent="InterfaceTerminal/Panel" unique_id=523337471]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 125.0
+offset_right = 597.0
+offset_bottom = 156.0
+text = "Que os benefícios da pesquisa superam os impactos causados aos animais."
+
+[node name="BotaoOpcao3" type="Button" parent="InterfaceTerminal/Panel" unique_id=32572422]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 170.0
+offset_right = 530.0
+offset_bottom = 201.0
+text = "Que não haverá necessidade de acompanhamento ético."
+
+[node name="InterfaceDocumento" type="CanvasLayer" parent="." unique_id=2086451069]
+visible = false
+
+[node name="Panel" type="Panel" parent="InterfaceDocumento" unique_id=2100322765]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="imagemDocumento" type="TextureRect" parent="InterfaceDocumento/Panel" unique_id=700142877]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 51.0
+offset_right = 1007.0
+offset_bottom = 460.0
+texture = ExtResource("10_hdpwe")
+
+[node name="Label" type="Label" parent="InterfaceDocumento/Panel" unique_id=738696631]
+layout_mode = 0
+offset_left = 674.0
+offset_top = 465.0
+offset_right = 1006.0
+offset_bottom = 511.0
+text = "(PRESS \"E\" para sair.)"
+label_settings = SubResource("LabelSettings_8ley3")
+
+[node name="tela_game_over" type="CanvasLayer" parent="." unique_id=607058446]
+process_mode = 3
+visible = false
+script = ExtResource("11_8ley3")
+
+[node name="Panel" type="Panel" parent="tela_game_over" unique_id=1992164229]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="tela_game_over/Panel" unique_id=711731559]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 645.0
+texture = ExtResource("12_1nf3m")
+
+[node name="Label" type="Label" parent="tela_game_over/Panel" unique_id=1347640116]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 416.0
+offset_right = 715.0
+offset_bottom = 471.0
+text = "\"R\" para Reiniciar"
+label_settings = SubResource("LabelSettings_juacc")
+
+[connection signal="pressed" from="InterfaceTerminal/Panel/BotaoOpcao1" to="terminal/terminalArea" method="_on_botao_opcao_1_pressed"]
+[connection signal="pressed" from="InterfaceTerminal/Panel/BotaoOpcao2" to="terminal/terminalArea" method="_on_botao_opcao_2_pressed"]
+[connection signal="pressed" from="InterfaceTerminal/Panel/BotaoOpcao3" to="terminal/terminalArea" method="_on_botao_opcao_3_pressed"]

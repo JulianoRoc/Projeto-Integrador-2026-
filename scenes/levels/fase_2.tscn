@@ -5,16 +5,21 @@
 [ext_resource type="Texture2D" uid="uid://l66il6h83k15" path="res://assets/sprites/parede meio P1.png" id="3_m83bm"]
 [ext_resource type="Texture2D" uid="uid://dnencux31j8pr" path="res://assets/sprites/aério 1.png" id="5_4smgp"]
 [ext_resource type="Script" uid="uid://xuvg82wwopa2" path="res://scripts/objects/documento_area.gd" id="6_5qs8v"]
-[ext_resource type="Texture2D" uid="uid://4s2kj0obvnbw" path="res://assets/sprites/janela.png" id="9_uymmr"]
+[ext_resource type="Script" uid="uid://blhwiemytgrkp" path="res://scripts/objects/terminal_area_2.gd" id="7_m8bhn"]
 [ext_resource type="PackedScene" uid="uid://p0w7kbre81jb" path="res://scenes/objects/caixa.tscn" id="10_a4omb"]
-[ext_resource type="Script" uid="uid://bkoypsb16pqw4" path="res://scripts/objects/sensor_janela.gd" id="10_dua4f"]
 [ext_resource type="Texture2D" uid="uid://bipyp1sm2xnk2" path="res://assets/sprites/terminal.png" id="10_wfkpp"]
-[ext_resource type="Script" uid="uid://dlyshqkyy8n4h" path="res://scripts/objects/terminal_area.gd" id="11_wsjgd"]
+[ext_resource type="Texture2D" uid="uid://bajliuowsnc31" path="res://assets/sprites/documento_2.png" id="11_m8bhn"]
 [ext_resource type="Script" uid="uid://x5q2ny1m7rdd" path="res://scripts/player/player.gd" id="12_j33ns"]
 [ext_resource type="Texture2D" uid="uid://dtfnk51a4xm44" path="res://assets/sprites/000.png" id="13_nov3n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga7mg"]
-size = Vector2(359, 20)
+size = Vector2(351, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4omb"]
+size = Vector2(4, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uymmr"]
+size = Vector2(4, 157.25781)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wwkh"]
 size = Vector2(36.000008, 26.000004)
@@ -22,16 +27,22 @@ size = Vector2(36.000008, 26.000004)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dtam"]
 size = Vector2(36, 31.250002)
 
+[sub_resource type="LabelSettings" id="LabelSettings_4l7t0"]
+font_size = 10
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qrp63"]
 radius = 4.0
 height = 28.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xapt8"]
-size = Vector2(79.5, 45)
+[sub_resource type="LabelSettings" id="LabelSettings_m8bhn"]
+font_size = 10
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n40sw"]
 radius = 6.0
 height = 12.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_a4omb"]
+font_size = 33
 
 [node name="Fase-2" type="Node2D" unique_id=1272207765]
 position = Vector2(198, 51)
@@ -39,8 +50,16 @@ position = Vector2(198, 51)
 [node name="solo" type="StaticBody2D" parent="." unique_id=866626645]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="solo" unique_id=622555382]
-position = Vector2(99, 174)
+position = Vector2(97.5, 174)
 shape = SubResource("RectangleShape2D_ga7mg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="solo" unique_id=1890902101]
+position = Vector2(275, 105.5)
+shape = SubResource("RectangleShape2D_a4omb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="solo" unique_id=1820179779]
+position = Vector2(-80, 105.62891)
+shape = SubResource("RectangleShape2D_uymmr")
 
 [node name="CantoEsquerdoP1" type="Sprite2D" parent="." unique_id=1731063381]
 position = Vector2(-21.75, 95.57814)
@@ -62,27 +81,31 @@ position = Vector2(-1.5258789e-05, 0)
 scale = Vector2(1, 0.99999994)
 
 [node name="Aério1" type="Sprite2D" parent="armarioaereo" unique_id=1750601355]
-position = Vector2(181.00002, 109.00001)
+position = Vector2(122.000015, 114.00001)
 scale = Vector2(0.048120845, 0.036795806)
 texture = ExtResource("5_4smgp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="armarioaereo" unique_id=1398475799]
-position = Vector2(181.00002, 109.00001)
+position = Vector2(122.000015, 114.00001)
 shape = SubResource("RectangleShape2D_7wwkh")
 
-[node name="documentoArea" type="Area2D" parent="armarioaereo" unique_id=478293642]
+[node name="documentoArea" type="Area2D" parent="armarioaereo" unique_id=478293642 node_paths=PackedStringArray("terminal_area_node", "interface_documento")]
 script = ExtResource("6_5qs8v")
+terminal_area_node = NodePath("../../terminal/terminalArea")
+interface_documento = NodePath("../../InterfaceDocumento")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="armarioaereo/documentoArea" unique_id=1883714867]
-position = Vector2(181.00002, 81.00001)
+position = Vector2(122.000015, 86.00001)
 shape = SubResource("RectangleShape2D_7dtam")
 
 [node name="avisoTexto" type="Label" parent="armarioaereo/documentoArea" unique_id=269200228]
-offset_left = 94.000015
-offset_top = 65.00001
-offset_right = 284.0
-offset_bottom = 88.00001
-text = "Aperte \"E\" para interagir"
+visible = false
+offset_left = 141.00002
+offset_top = 64.00001
+offset_right = 225.00002
+offset_bottom = 78.00001
+text = "\"E\" para interagir"
+label_settings = SubResource("LabelSettings_4l7t0")
 
 [node name="terminal" type="StaticBody2D" parent="." unique_id=1011989553]
 
@@ -92,7 +115,7 @@ scale = Vector2(0.020996055, 0.02246093)
 texture = ExtResource("10_wfkpp")
 
 [node name="terminalArea" type="Area2D" parent="terminal" unique_id=276336584]
-script = ExtResource("11_wsjgd")
+script = ExtResource("7_m8bhn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="terminal/terminalArea" unique_id=733746610]
 position = Vector2(247, 150)
@@ -100,30 +123,20 @@ shape = SubResource("CapsuleShape2D_qrp63")
 
 [node name="avisoTerminal" type="Label" parent="terminal/terminalArea" unique_id=1262838304]
 visible = false
-offset_left = 200.0
-offset_top = 109.0
-offset_right = 296.0
-offset_bottom = 132.0
-text = "\"E\" Terminal"
+offset_left = 146.0
+offset_top = 77.0
+offset_right = 266.0
+offset_bottom = 139.0
+text = "
+\"E\" para interagir"
+label_settings = SubResource("LabelSettings_m8bhn")
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="caixa" type="RigidBody2D" parent="." unique_id=2049493559]
 
-[node name="janela" type="StaticBody2D" parent="." unique_id=777833997]
-
-[node name="Sprite2D" type="Sprite2D" parent="janela" unique_id=557875241]
-position = Vector2(71.37501, 102.5)
-scale = Vector2(0.09457042, 0.10248447)
-texture = ExtResource("9_uymmr")
-
-[node name="SensorJanela" type="Area2D" parent="janela" unique_id=974688487]
-script = ExtResource("10_dua4f")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="janela/SensorJanela" unique_id=2060724706]
-position = Vector2(71.25, 141.5)
-shape = SubResource("RectangleShape2D_xapt8")
-
 [node name="caixa2" parent="." unique_id=272939095 instance=ExtResource("10_a4omb")]
-position = Vector2(-10, 134)
+position = Vector2(-23, 130)
 
 [node name="player" type="CharacterBody2D" parent="." unique_id=80367506]
 light_mask = 3
@@ -132,59 +145,21 @@ position = Vector2(107, -6)
 script = ExtResource("12_j33ns")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1466385622]
-position = Vector2(-137, 144)
+position = Vector2(-161, 146)
 shape = SubResource("CapsuleShape2D_n40sw")
 
 [node name="000" type="Sprite2D" parent="player" unique_id=824487934]
-position = Vector2(-137, 144)
+position = Vector2(-161.00002, 145)
 scale = Vector2(0.004409898, 0.0052872836)
 texture = ExtResource("13_nov3n")
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=691958736]
 position = Vector2(-137, 146)
 zoom = Vector2(5, 5)
-
-[node name="InterfaceDocumento" type="CanvasLayer" parent="." unique_id=2111150795]
-visible = false
-
-[node name="Panel" type="Panel" parent="InterfaceDocumento" unique_id=1537519108]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -336.0
-offset_top = -176.0
-offset_right = -188.0
-offset_bottom = -55.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="InterfaceDocumento/Panel" unique_id=12307629]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -73.0
-offset_top = -57.5
-offset_right = 93.0
-offset_bottom = 62.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Lorem ipsum dolor 
-sit amet, 
-consectetur 
-adipiscing elit."
-
-[node name="Button" type="Button" parent="InterfaceDocumento/Panel" unique_id=1394550102]
-layout_mode = 0
-offset_left = 151.0
-offset_top = 1.0
-offset_right = 193.0
-offset_bottom = 32.0
-text = "X (E)"
+limit_left = 120
+limit_top = 78
+limit_right = 471
+limit_bottom = 216
 
 [node name="InterfaceTerminal" type="CanvasLayer" parent="." unique_id=1758442532]
 visible = false
@@ -195,75 +170,75 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.5
-offset_top = -81.0
-offset_right = 91.5
-offset_bottom = 81.0
+offset_left = -276.0
+offset_top = -87.0
+offset_right = 255.0
+offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="InterfaceTerminal/Panel" unique_id=610856624]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "1. Pergunta Pergunta 
-     Pergunta Pergunta"
+offset_left = 60.0
+offset_top = 10.0
+offset_right = 466.0
+offset_bottom = 59.0
+text = "Segundo o texto, qual é uma vantagem dos métodos
+alternativos aos testes em animais?"
 
 [node name="BotaoOpcao1" type="Button" parent="InterfaceTerminal/Panel" unique_id=955645145]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 55.0
-offset_right = 165.0
-offset_bottom = 86.0
-text = "opção 01"
+offset_left = 83.0
+offset_top = 66.0
+offset_right = 432.0
+offset_bottom = 97.0
+text = "Eles causam menos sofrimento aos animais."
 
 [node name="BotaoOpcao2" type="Button" parent="InterfaceTerminal/Panel" unique_id=523337471]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 91.0
-offset_right = 165.0
-offset_bottom = 116.0
-text = "opção 02"
+offset_left = 8.0
+offset_top = 105.0
+offset_right = 523.0
+offset_bottom = 136.0
+text = "Eles aumentam a quantidade de animais utilizados em pesquisas."
 
 [node name="BotaoOpcao3" type="Button" parent="InterfaceTerminal/Panel" unique_id=32572422]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 126.0
-offset_right = 165.0
-offset_bottom = 157.0
-text = "opção 03"
+offset_left = 83.0
+offset_top = 148.0
+offset_right = 430.0
+offset_bottom = 179.0
+text = "Eles impedem o desenvolvimento científico."
 
-[node name="InterfaceDialogo" type="CanvasLayer" parent="." unique_id=486165362]
+[node name="InterfaceDocumento" type="CanvasLayer" parent="." unique_id=313308354]
 visible = false
 
-[node name="Panel" type="Panel" parent="InterfaceDialogo" unique_id=1707611420]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -437.0
-offset_top = -162.0
-offset_right = -203.0
-offset_bottom = -41.0
+[node name="Panel" type="Panel" parent="InterfaceDocumento" unique_id=660667608]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextoDialogo" type="Label" parent="InterfaceDialogo/Panel" unique_id=542732650]
+[node name="imagemDocumento" type="TextureRect" parent="InterfaceDocumento/Panel" unique_id=311104518]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 231.0
-offset_bottom = 118.0
-autowrap_mode = 2
+offset_left = 169.0
+offset_top = 51.0
+offset_right = 1007.0
+offset_bottom = 460.0
+texture = ExtResource("11_m8bhn")
 
-[node name="TimerTexto" type="Timer" parent="InterfaceDialogo/Panel" unique_id=531504324]
-wait_time = 0.05
-one_shot = true
+[node name="Label" type="Label" parent="InterfaceDocumento/Panel" unique_id=657609657]
+layout_mode = 0
+offset_left = 674.0
+offset_top = 465.0
+offset_right = 1006.0
+offset_bottom = 511.0
+text = "(PRESS \"E\" para sair.)"
+label_settings = SubResource("LabelSettings_a4omb")
 
 [connection signal="body_entered" from="armarioaereo/documentoArea" to="player" method="_on_documento_area_body_entered"]
 [connection signal="body_exited" from="armarioaereo/documentoArea" to="player" method="_on_documento_area_body_exited"]
-[connection signal="pressed" from="InterfaceDocumento/Panel/Button" to="armarioaereo/documentoArea" method="_on_button_pressed"]
 [connection signal="pressed" from="InterfaceTerminal/Panel/BotaoOpcao1" to="terminal/terminalArea" method="_on_botao_opcao_1_pressed"]
 [connection signal="pressed" from="InterfaceTerminal/Panel/BotaoOpcao2" to="terminal/terminalArea" method="_on_botao_opcao_2_pressed"]
 [connection signal="pressed" from="InterfaceTerminal/Panel/BotaoOpcao3" to="terminal/terminalArea" method="_on_botao_opcao_3_pressed"]
